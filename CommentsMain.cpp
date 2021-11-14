@@ -1,13 +1,6 @@
 // Section 5
 // Comments
 
-/*****************************************************
- * author Frank
- * 
- * 11/11/2017  Frank - fixed bug in ...
- * 11/13/2017 Joe - Added function to...
- * 
- ****************************************************/
 
 #include <iostream>
 
