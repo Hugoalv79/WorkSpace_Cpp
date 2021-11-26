@@ -12,6 +12,7 @@ private:
     string genero;
     double calificacionPromedio;
     int cantEpisodios;
+    Episodio episodios[5];
 
 public:
     //Métodos constructores - Cambiar el valor del atributo desde la app
@@ -23,7 +24,13 @@ public:
     void setDuracion(int _duracion);
     void setGenero(string _genero);
     void setCalificacion(double _calificacionPromedio);
-    void setCantidadEpisodios(int cantEpisodios);
+    void setCantidadEpisodios(int _cantEpisodios);
+
+    // Nuevos métodos
+    void setEpisodio(int _Episodio);
+    void addEpisodio(Episodio _Episodio);
+    void delEpisodio();
+
 
     // Métodos de acceso - OBTENER EL VALOR DE UN ATRIBUTO DESDE LA APP
     string getId();
@@ -33,8 +40,15 @@ public:
     double getCalificacion();
     int getCantidadEpisodios();
 
+    // Métodos de acceso: Nuevos
+    int getEpisodio(int &_numEpisodio);
+    
+
     // Otros métodos
     string str();
+
+    // Nuevos Otros métodos
+    void calcularCalificacionPromedio();
 
 };
 
