@@ -40,6 +40,55 @@ void Serie::setCantidadEpisodios(int _cantEpisodios){
     cantEpisodios = _cantEpisodios;
 }
 
+
+// Nuevos métodos
+void setEpisodio(int &_numEpisodio, Episodio _episodio){
+    if(episodios[_numEpisodio - 1] > 0){
+        episodios[_numEpisodio] = _episodio;
+    }
+    else{
+        episodios[_numEpisodio] = -1;
+        printf("No existe el episodio");
+        
+    }
+}
+void Serie::calcularCalificacionPromedio(){
+    double acum = 0;
+
+    for (int indice = 0; indice < cantEpisodios ; ++indice){
+        acum += episodios[indice].getCalificacion();
+    }
+
+    if (cantEpisodios > 0){
+        calificacionPromedio = acum / cantEpisodios;
+
+    }
+
+}
+
+void Serie::addEpisodio(Episodio _episodio){
+    if (cantEpisodios <= 5 && cantEpisodios > 0){
+        episodios[cantEpisodios - 1] = _episodio;
+
+        cantEpisodios++;
+    }
+
+    else{
+        printf("No se pudo añadir este espisodio");
+    }
+
+}
+
+void Serie::delEpisodio(){
+    if(cantEpisodios > 0){
+        printf("Se ha eliminado el Episodio\n");
+        cout << episodios[cantEpisodios - 1].str() + "\n";
+        delete episodios[cantEpisodios - 1];
+        cantEpisodios--;
+    }
+    
+}
+
 // Métodos de acceso - OBTENER EL VALOR DE UN ATRIBUTO DESDE LA APP
 string Serie::getId(){
     return id;
@@ -60,7 +109,25 @@ int Serie::getCantidadEpisodios(){
     return cantEpisodios;
 }
 
+// Métodos de acceso: Nuevos
+Episodio Serie::getEpisodio(int &_numEpisodio){
+    Episodio epi;
+    if(_numEpisodio < 5){
+        return episodios[_numEpisodio - 1];
+    }
+    else{
+        return epi;
+    }
+}
+
 // Otros métodos
 string Serie::str(){
-    return id + ',' + titulo;
+    string acum = "";
+
+    for (int indice = 0; indice < cantEpisodios; ++indice){
+        acum = acum + 'E' + to_string(indice) + episodios[indice].str() + "\n";
+    }
+
+    return id + ',' + titulo + ',' + to_string(duracion) + ',' + genero + ',' + to_string(calificacionPromedio)
+        + ',' + to_string(cantEpisodios) + "\n" + acum;
 }
