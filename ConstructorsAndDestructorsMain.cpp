@@ -1,61 +1,33 @@
-// Section 13
+// Section 15
 // Constructors and Destructors
-
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-class Player
-{
+class Base {
 private:
-   std::string name;
-   int health;
-   int xp;
+    int value;
 public:
-    void set_name(std::string name_val) { 
-        name = name_val; 
-    }
-    // Overloaded Constructors
-    Player() { 
-        cout << "No args constructor called"<< endl;
-    }
-    Player(std::string name) { 
-        cout << "String arg constructor called"<< endl;
-    }
-    Player(std::string name, int health, int xp) {
-        cout << "Three args constructor called"<< endl; 
-    }
-    ~Player() { 
-        cout << "Destructor called for " << name << endl; 
-    }
+   Base() : value{0} { cout << "Base no-args constructor" << endl; }
+   Base(int x) : value{x} { cout << "Base (int) overloaded constructor" << endl; }
+   ~Base(){ cout << "Base destructor" << endl; }
+};
+
+class Derived : public Base {
+    using Base::Base;
+private:
+    int doubled_value;
+public:
+    Derived() : doubled_value {0} { cout << "Derived no-args constructor " << endl; } 
+    Derived(int x) : doubled_value {x*2}  { cout << "Derived (int) overloaded constructor" << endl; }
+    ~Derived() { cout << "Derived destructor " << endl; } 
 };
 
 int main() {
-
-    {
-        Player slayer;
-        slayer.set_name("Slayer");
-    }
-    
-    {
-        Player frank;
-        frank.set_name("Frank");
-        Player hero("Hero");
-        hero.set_name("Hero");
-        Player villain("Villain", 100, 12);
-        villain.set_name("Villain");
-    }
-    
-    Player *enemy = new Player;
-    enemy->set_name("Enemy");
-    
-    Player *level_boss = new Player("Level Boss", 1000, 300);
-    level_boss->set_name("Level Boss");
-    
-    delete enemy;
-    delete level_boss;
+//   Base b;
+//    Base b{100};
+ //   Derived d;
+ Derived d {1000};
     
     return 0;
 }
-
