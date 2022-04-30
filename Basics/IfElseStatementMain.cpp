@@ -16,13 +16,16 @@ int main() {
         cout << num << " is greater than or equal to " << target << endl;
         int diff { num - target};
         cout << num << " is " << diff << " greater than " << target << endl;
-    } else {
+    } 
+    
+    else {
         cout << "\n==================================" << endl;
         cout << num << " is less than " << target << endl;
         int diff { target - num};
         cout << num << " is " << diff << " less than " << target << endl;
     }
-    cout  << endl;
+    
+    cout  << "\n";
     return 0;
 }
 
